@@ -32,28 +32,40 @@ Follow these steps to deploy the environment:
 1. **Clone the repository**
 
 ```
-git clone https://github.com/hackertarget/nmap-did-what.git
+git clone https://github.com/tmichett/nmap-did-what.git
 ```
 
-2. **Parse Nmap XML output**
+2. **Create NMap Data Source**
+
+Run the `nmap` command to capture Nmap data as XML output for input as data in an SQLite database:
+
+```
+nmap -sV -F --script=http-title,ssl-cert -oA myoutput <SUBNET>/24
+```
+
+```
+cp nmap_output.xml ~/Github/nmap-did-what/data/
+```
+
+3. **Parse Nmap XML output**
 
 Run the `nmap-to-sqlite.py` script to parse your Nmap XML output and store the data in an SQLite database:
 
 ```
-cd nmap-did-what/data/
+cd ~/Github/nmap-did-what/data/
 python nmap-to-sqlite.py nmap_output.xml
 ```
 
-3. **Start the Grafana Container**
+4. **Start the Grafana Container**
 
 Use Docker Compose to start the Grafana container:
 
 ```
-cd nmap-did-what
+cd ~/Github/nmap-did-what
 docker-compose up -d
 ```
 
-4. **Access Grafana**
+5. **Access Grafana**
 
 Once the container is up and running, access the Grafana dashboard through your web browser:
 
