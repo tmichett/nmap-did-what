@@ -53,7 +53,7 @@ Run the `nmap-to-sqlite.py` script to parse your Nmap XML output and store the d
 
 ```
 cd ~/Github/nmap-did-what/data/
-python nmap-to-sqlite.py nmap_output.xml
+python nmap-to-sqlite.py myoutput.xml
 ```
 
 4. **Start the Grafana Container**
@@ -61,7 +61,7 @@ python nmap-to-sqlite.py nmap_output.xml
 Use Docker Compose to start the Grafana container:
 
 ```
-cd ~/Github/nmap-did-what
+cd ~/Github/nmap-did-what/grafana-docker
 docker-compose up -d
 ```
 
